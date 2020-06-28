@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+    <h1>Search Your Question Related to Your Topic</h1>
+    <div>
+        <h3>Topics are-</h3>
+        <ul>
+            <li>vege</li>
+            <li>funny</li>
+            <li>gk</li>
+        </ul>
+    </div>
+    <form method="post" action="/search/">
+        {% csrf_token%}
+        <input type="text" name="srh" placeholder="Enter topic from the list">
+        <label><button type="submit">Search</button></label>
+    </form>
+</div>
+<div>
+    {% if messages%}
+        <ul>
+            {% for q in messages%}
+            <li style="color: red">{{q}}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</div>
+<div>
+    <script>
+        var count=0;
+    </script>
+    {% if sr %}
+        {% for q in sr%}
+<form name="myform">
+            <table>
+                <tr>
+        <td ><strong>{{q.ques}}?</strong></td>
+    </tr>
+    <tr>
+        <td><input type="radio" id="opt1" name="{{q.id}}" value="{{q.opt1}}">{{q.opt1}}</td>
+    </tr>
+    <tr>
+        <td><input type="radio" id="opt2" name="{{q.id}}" value="{{q.opt2}}">{{q.opt2}}</td>
+    </tr>
+    <tr>
+        <td><input type="radio" id="opt3" name="{{q.id}}" value="{{q.opt3}}">{{q.opt3}}</td>
+    </tr>
+    <tr>
+        <td><input type="radio" id="opt4" name="{{q.id}}" value="{{q.opt4}}">{{q.opt4}}</td>
+    </tr>
+            </table>
+    </form>
+
+    <hr>
+
+    {% endfor %}
+    <input type="button" value="submit" onclick="check()">
+
+    <script>
+
+            function check()
+            {
+                for(i=0;i<sr;i++)
+                {
+                var {{q.id}} = document.myform.{{q.id}}.value;
+                if({{q.id}}=={{q.ans}})
+                    {
+                        count++;
+                    }
+                }
+                alert("Your score is "+count+".")
+            }
+    </script>
+    {% endif %}
+
+</div>
+</body>
+</html>

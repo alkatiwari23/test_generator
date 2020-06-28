@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+
+{% block content %}
+<h1>Your Questions are...</h1>
+{% for questions in object_list %}
+<div>
+    <p><strong>{{questions.id}}. <a href="{% url 'post_detail' questions.pk %}">{{ questions.ques }}</a></strong></p>
+    <input type="radio">{{ questions.opt1}}
+    <input type="radio" >{{ questions.opt2}}
+    <input type="radio">{{ questions.opt3}}
+    <input type="radio">{{ questions.opt4}}
+</div>
+{% endfor %}
+{% endblock content %}
+</body>
+</html>

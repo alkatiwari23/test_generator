@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>First page</title>
+</head>
+<body>
+<p><strong>This is Admin Dashboard</strong></p>
+ {% if user.is_authenticated %}
+<p>Hi {{ user.username }}!</p>
+    <p><a href="{% url 'logout' %}">logout</a></p>
+    <a href="{% url 'home'%}">View Questions</a>
+{% else %}
+<p>You are not logged in.</p>
+<a href="{% url 'login' %}">login</a>
+<p><strong>Login is only for Admin</strong></p>
+<a href="{% url 'search' %}">Generate Test</a>
+{% endif %}
+
+</body>
+</html>

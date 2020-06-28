@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+{% block content %}
+<div>
+    <p>Your Question: <strong>{{ questions.ques }}</strong></p>
+    <p>Your Answer: <strong>Correct answer is: {{ questions.ans}}</strong></p>
+</div>
+{% endblock content %}
+</body>
+</html>
